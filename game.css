@@ -1,0 +1,148 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #2c71d3;
+    user-select: none;
+    overflow: hidden;
+}
+
+.container{
+    display: flex;
+    height: 100dvh;
+    width: 100dvw;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.users{
+    display: flex;
+    height: auto;
+    justify-content: space-around;
+    align-items: end;
+    width: 100%;
+}
+
+.users div{
+    width: 100%;
+    display: flex;
+    font-size: clamp(1.2rem, 2vw, 5rem);
+    font-weight: 550;
+    color: whitesmoke;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+#result-board{
+    width: 100%;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    background-color: #2c71d3;
+}
+
+.result-container{
+    color: whitesmoke;
+    width: 30dvw;
+    min-width: 10rem;
+    min-height: 1rem;
+    height: 50%;
+    margin: 0.5rem;
+    background-color: #191D88;
+    display: flex;
+    border-radius: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+#game-board, #user-board, #machine-board {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 50%;
+}
+
+.result-container span{
+    font-size: clamp(1.4rem, 4vw, 5rem);
+}
+
+.vertical-line::after {
+    content: '';
+    border: 0.45rem solid #2c71d3;
+    position: absolute;
+    height: 100%;
+    top: 50%;
+    bottom: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#game-board{
+    background-color: #c9fff6;
+    width: 98dvw;
+    position: relative;
+    flex: 1;
+}
+
+.svgContainer{
+    display: flex;
+    justify-content: center;
+}
+
+svg{
+    width: 60%;
+    height: 60%;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    transform: translate(-65%);
+}
+
+.buttons-container{
+    background-color: #2c71d3;
+    width: 100dvw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex: 1;
+}
+
+button{
+    width: 8.5rem;
+    height: 5rem;
+    font-size: clamp(1rem, 1.5vw, 9rem);
+    font-weight: 550;
+    color: whitesmoke;
+    border-radius: 5rem;
+    background-color: #FFC436;
+}
+
+button:hover{
+    background-color: #f5d281;
+}
+
+@media (max-width: 600px) {
+    button{
+        width: 7.5rem;
+        height: 4rem;
+    }
+}
+@media (max-width: 500px) {
+    button{
+        width: 6rem;
+        height: 3rem;
+    }
+}
+
+@media (max-width: 400px) {
+    button{
+        width: 5.5rem;
+        height: 3rem;
+    }
+}
+/* ANIMATIONS ---------------------------------- */
+@keyframes fadeIn { 
+    0% {opacity: 0;}
+    50%{opacity: 0.5;}
+    100% {opacity: 1;} 
+};

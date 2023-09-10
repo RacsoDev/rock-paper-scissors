@@ -21,11 +21,19 @@ const results = {
     win: 'win',
     lose: 'lose',
 }
-const messages = {
-    error: 'Error tu cuidao',
-    win: 'Has ganado!!',
-    lose: 'Has perdido!!',
-    tie: "Empate!!"
+const actions = {
+    win: {
+        message: 'You won!',
+        color: 'green',
+    },
+    lose: {
+        message: 'You lost!',
+        color: 'red',
+    },
+    tie: {
+        message: 'Tie!',
+        color: 'yellow',
+    },
 }
 
 const standardAnimationTime = {

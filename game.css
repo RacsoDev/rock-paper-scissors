@@ -33,8 +33,29 @@ body{
     align-items: flex-end;
 }
 
+.score{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    color: whitesmoke;
+    height: 4rem;
+    top: 10%;
+    font-size: clamp(2.5rem, 4vw, 5rem);
+    padding: 1rem;
+}
+
+.user-score{
+    left: 2%;
+}
+
+.machine-score{
+    right: 2%;
+}
+
 #result-board{
-    width: 100%;
+    width: 50%;
     display: flex;
     flex: 1;
     justify-content: center;

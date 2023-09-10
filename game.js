@@ -2,6 +2,8 @@
 const userBoard = document.getElementById('user-board');
 const machineBoard = document.getElementById('machine-board');
 const resultBoard = document.getElementById('result-board');
+const userScore = document.querySelector('.user-score');
+const machineScore = document.querySelector('.machine-score');
 
 const paperButton = document.getElementById('paper'); // 0
 const scissorsButton = document.getElementById('scissors'); // 1
@@ -39,19 +41,29 @@ const setAnimations = () => {
 resetButton.onclick = () => {
     resetAnimations();
     resetBoards();
+    setBoardText(userScore, 0);
+    setBoardText(machineScore, 0);
 }
 
 const setButtonAction = (button, index) => button.onclick = () => {
     const currentUserChoice = choices[index]; 
     const machineChoice = choices[generateMachineChoice()];
-    const result = compareResults(currentUserChoice.id, machineChoice.id);
+    const hasUserWon = compareResults(currentUserChoice.id, machineChoice.id);
+    const currentUserScore = Number(userScore.innerHTML);
+    const currentMachineScore = Number(machineScore.innerHTML);
+   
+    const isTie = hasUserWon === undefined;
+    const resultUserData = !isTie && hasUserWon ? userScore : machineScore;
+    const resultMachineData = !isTie && hasUserWon ? currentUserScore + 1 : currentMachineScore + 1;
+    if (!isTie) setBoardText(resultUserData, resultMachineData);
 
-    const isTie = result === undefined;
-    const resultMessage = isTie ? messages.tie : messages[result ? results.win : results.lose];
-    
+    const resultMessage = isTie ? actions.tie.message : actions[hasUserWon ? results.win : results.lose].message;
+    const childResultBoardElement = `<div class="result-container"><span>${resultMessage}</span></div>`;
+    const resultColor = actions[hasUserWon ? results.win : results.lose].color;
     setBoardText(userBoard, currentUserChoice.img);
     setBoardText(machineBoard, machineChoice.img);
-    setBoardText(resultBoard, `<div class="result-container"><span>${resultMessage}</span></div>`);
+    setBoardText(resultBoard, childResultBoardElement);
+    resultBoard.style = `backgroundColor: '${resultColor}'`;
     
     setAnimations();
 };
@@ -66,7 +78,7 @@ const compareResults = (userChoiceIndex, machineChoiceIndex) => {
     
     const isUserIndexBigger = machineChoiceIndex < userChoiceIndex; 
     const minorCornerCase = machineChoiceIndex + choiceMirrorFactor !== userChoiceIndex; 
-    const majorCornerCase = machineChoiceIndex - choiceMirrorFactor === userChoiceIndex; 
+    const majorCornerCase = machineChoiceIndex - choiceMirrorFactor === userChoiceIndex;
 
     return isUserIndexBigger ? minorCornerCase : majorCornerCase;
 };

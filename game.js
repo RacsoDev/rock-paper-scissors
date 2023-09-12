@@ -83,5 +83,9 @@ const compareResults = (userChoiceIndex, machineChoiceIndex) => {
     return isUserIndexBigger ? minorCornerCase : majorCornerCase;
 };
 
+const storedUserName = localStorage.getItem('username');
+const displayUserName = document.getElementById('display-user');
+displayUserName.textContent = storedUserName;
+
 // PROGRAM ------------------------------------------------
 initializeGame();

@@ -1,14 +1,3 @@
-<?php
-    session_start();
-    if($_SERVER["REQUEST_METHOD"] == "POST")
-    {
-        $username = $_POST["username"];
-        $_SESSION["username"] = $username;
-        header("Location: game.php");
-        exit;
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,14 +11,30 @@
         <div class="intro-text">
             <span>Enter your username</span>
         </div>
-        <form method="POST">
+        <form method="POST" onsubmit="onSubmit(event)">
             <div class="input-container">
                 <div class="user-input">
-                    <input type="text" autocomplete="off" placeholder="Your name" name="username" required>
+                    <input type="text" autocomplete="off" placeholder="Your name" id="username" required>
                 </div>
-                <div><input type="submit" value="Submit" name="submit"></div>
+                <div><input type="submit" value="Submit"></div>
             </div>
         </form>
     </div>
 </body>
 </html>
+<script>
+    function onSubmit(e)
+    {
+        e.preventDefault();
+        const username = document.getElementById('username');
+        const usernameValue = username.value;
+        const regex = /^(?!.* {2})[^\s].*[^\s]$/;
+        localStorage.setItem('username', usernameValue);
+        if (regex.test(usernameValue)) {
+            window.location.href = 'game.html';
+        }
+        else {
+            alert('Invalid Username');
+        }
+    }
+</script>

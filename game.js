@@ -9,6 +9,10 @@ const paperButton = document.getElementById('paper'); // 0
 const scissorsButton = document.getElementById('scissors'); // 1
 const rockButton = document.getElementById('rock'); // 2
 const resetButton = document.getElementById('reset');
+const retryButton = document.querySelector('.retry-button');
+
+const modal = document.querySelector('.modal');
+const modalText = document.querySelector('.modal-text');
 
 // FUNCTIONS - DECLARATIONS --------------------------------------------------
 /**
@@ -45,6 +49,14 @@ resetButton.onclick = () => {
     setBoardText(machineScore, 0);
 }
 
+retryButton.onclick = () => {
+    modal.style.display = 'none'
+    resetAnimations();
+    resetBoards();
+    setBoardText(userScore, 0);
+    setBoardText(machineScore, 0);
+}
+
 const setButtonAction = (button, index) => button.onclick = () => {
     const currentUserChoice = choices[index]; 
     const machineChoice = choices[generateMachineChoice()];
@@ -57,16 +69,24 @@ const setButtonAction = (button, index) => button.onclick = () => {
     const resultMachineData = !isTie && hasUserWon ? currentUserScore + 1 : currentMachineScore + 1;
     if (!isTie) setBoardText(resultUserData, resultMachineData);
 
+    if(Number(userScore.textContent) === 3 || Number(machineScore.textContent) === 3)
+    {
+        modal.style.display = 'initial';
+        modalText.textContent = hasUserWon ? finalResult.winner : finalResult.loser;
+    }
+
     const resultMessage = isTie ? actions.tie.message : actions[hasUserWon ? results.win : results.lose].message;
     const childResultBoardElement = `<div class="result-container"><span>${resultMessage}</span></div>`;
-    const resultColor = actions[hasUserWon ? results.win : results.lose].color;
     setBoardText(userBoard, currentUserChoice.img);
     setBoardText(machineBoard, machineChoice.img);
     setBoardText(resultBoard, childResultBoardElement);
-    resultBoard.style = `backgroundColor: '${resultColor}'`;
     
     setAnimations();
 };
+
+const showResult = (message) => {
+    modalText.textContent = message;
+}
 
 const initializeGame = () => [paperButton, scissorsButton, rockButton].forEach(setButtonAction);
 

@@ -21,6 +21,12 @@ const results = {
     win: 'win',
     lose: 'lose',
 }
+
+const finalResult = {
+    winner: 'You succeeded',
+    loser: 'You failed',
+}
+
 const actions = {
     win: {
         message: 'You won!',

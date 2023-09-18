@@ -15,11 +15,24 @@ body{
     user-select: none;
 }
 
+.game-name{
+    min-height: 20%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 6rem;
+    color: rgb(56, 46, 46);
+    font-family: 'Bangers', cursive;
+    font-size: clamp(1.8rem, 4vw, 6rem);
+}
+
 .intro-text{
     width: 100dvw;
     padding-bottom: 1rem;
     color: #FFC436;
-    font-size: clamp(2.5rem, 4vw, 8rem);
+    font-size: clamp(1.2rem, 4vw, 3rem);
     text-align: center;
 }
 

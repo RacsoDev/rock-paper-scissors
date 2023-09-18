@@ -14,7 +14,7 @@
         <form method="POST" onsubmit="onSubmit(event)">
             <div class="input-container">
                 <div class="user-input">
-                    <input onchange="validateUsername(event)" type="text" autocomplete="off" placeholder="Your name (max: 8 chars)" id="username" required>
+                    <input oninput="validateUsername(event)" type="text" autocomplete="off" placeholder="Your name (max: 8 chars)" id="username" required>
                 </div>
                 <div><input type="submit" value="Submit"></div>
             </div>
@@ -26,23 +26,26 @@
     function onSubmit(e)
     {
         e.preventDefault();
+        if (validateUsername()) {
         window.location.href = 'game.html';
+        }
     }
     
-    function validateUsername(e){
-        const inputValue = e.target.value;
-        const isBeyondCharLimit = inputValue.length > 8;
-
+    function validateUsername(){
         const username = document.getElementById('username');
-        // const usernameValue = username.value;
-        // const regex = /^(?!.* {2})[^\s].*[^\s]$/;
-        // const regexStrlen = /^.{1,8}$/;
-        // localStorage.setItem('username', usernameValue);
-        // if (regex.test(usernameValue) && regexStrlen.test(usernameValue)) {
-        // }
-        // else {
-        //     username.classList.add('error');
-        //     username.value = '';
-        // }
+        const inputValue = document.getElementById('username').value;
+        const isBeyondCharLimit = inputValue.length > 8;
+        const regex = /^(?!.* {2})[^\s].*[^\s]$/;
+        localStorage.setItem('username', inputValue);
+
+        if(isBeyondCharLimit)
+        {
+            username.classList.add('error');
+            return false;
+        }
+        else if(regex.test(inputValue)){
+            username.classList.remove('error');
+            return true;
+        }
     }
 </script>

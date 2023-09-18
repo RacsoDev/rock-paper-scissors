@@ -72,7 +72,8 @@ const setButtonAction = (button, index) => button.onclick = () => {
     if(Number(userScore.textContent) === 3 || Number(machineScore.textContent) === 3)
     {
         modal.style.display = 'initial';
-        modalText.textContent = hasUserWon ? finalResult.winner : finalResult.loser;
+        modalText.textContent = hasUserWon ? finalResult.winner.text : finalResult.loser.text;
+        modal.style.backgroundColor = hasUserWon ? finalResult.winner.color : finalResult.loser.color;
     }
 
     const resultMessage = isTie ? actions.tie.message : actions[hasUserWon ? results.win : results.lose].message;

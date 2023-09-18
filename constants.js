@@ -23,8 +23,14 @@ const results = {
 }
 
 const finalResult = {
-    winner: 'You succeeded',
-    loser: 'You failed',
+    winner:{
+        text: 'You succeeded',
+        color: 'green',
+    },
+    loser:{
+        text: 'You failed',
+        color: 'red',
+    },
 }
 
 const actions = {

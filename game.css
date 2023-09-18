@@ -1,3 +1,8 @@
+*{
+
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 body{
     margin: 0;
     padding: 0;
@@ -52,6 +57,7 @@ body{
 .users{
     display: flex;
     height: auto;
+    margin-bottom: 0.6rem;
     justify-content: space-around;
     align-items: end;
     width: 100%;
@@ -60,7 +66,7 @@ body{
 .users div{
     width: 100%;
     display: flex;
-    font-size: clamp(1.2rem, 2vw, 5rem);
+    font-size: clamp(1.8rem, 2vw, 5rem);
     font-weight: 550;
     color: whitesmoke;
     justify-content: center;
@@ -96,13 +102,17 @@ body{
     background-color: #2c71d3;
 }
 
+#result-board span{
+    font-size: clamp(0.8rem, 5vw, 3rem) ;
+}
+
 .result-container{
     color: whitesmoke;
-    width: 30dvw;
-    min-width: 10rem;
+    width: 45dvw;
     min-height: 1rem;
     height: 50%;
     margin: 0.5rem;
+    padding: 0.2rem;
     background-color: #191D88;
     display: flex;
     border-radius: 100px;

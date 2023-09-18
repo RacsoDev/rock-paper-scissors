@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock, Paper, Scissors</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
@@ -14,7 +14,7 @@
         <form method="POST" onsubmit="onSubmit(event)">
             <div class="input-container">
                 <div class="user-input">
-                    <input type="text" autocomplete="off" placeholder="Your name" id="username" required>
+                    <input onchange="validateUsername(event)" type="text" autocomplete="off" placeholder="Your name (max: 8 chars)" id="username" required>
                 </div>
                 <div><input type="submit" value="Submit"></div>
             </div>
@@ -26,16 +26,23 @@
     function onSubmit(e)
     {
         e.preventDefault();
+        window.location.href = 'game.html';
+    }
+    
+    function validateUsername(e){
+        const inputValue = e.target.value;
+        const isBeyondCharLimit = inputValue.length > 8;
+
         const username = document.getElementById('username');
-        const usernameValue = username.value;
-        const regex = /^(?!.* {2})[^\s].*[^\s]$/;
-        localStorage.setItem('username', usernameValue);
-        if (regex.test(usernameValue)) {
-            window.location.href = 'game.html';
-        }
-        else {
-            alert('Invalid Username');
-            username.value = '';
-        }
+        // const usernameValue = username.value;
+        // const regex = /^(?!.* {2})[^\s].*[^\s]$/;
+        // const regexStrlen = /^.{1,8}$/;
+        // localStorage.setItem('username', usernameValue);
+        // if (regex.test(usernameValue) && regexStrlen.test(usernameValue)) {
+        // }
+        // else {
+        //     username.classList.add('error');
+        //     username.value = '';
+        // }
     }
 </script>

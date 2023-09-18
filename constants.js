@@ -29,15 +29,13 @@ const finalResult = {
 
 const actions = {
     win: {
-        message: 'You won!',
-        color: 'green',
+        message: 'You won this round!',
     },
     lose: {
-        message: 'You lost!',
-        color: 'red',
+        message: 'You lost this round!',
     },
     tie: {
-        message: 'Tie!',
+        message: 'It\'s a Tie!',
         color: 'yellow',
     },
 }

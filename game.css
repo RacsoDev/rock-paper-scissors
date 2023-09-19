@@ -103,7 +103,7 @@ body{
 }
 
 #result-board span{
-    font-size: clamp(0.8rem, 5vw, 3rem) ;
+    font-size: clamp(0.7rem, 3vw, 3rem) ;
 }
 
 .result-container{
@@ -124,12 +124,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
     height: 50%;
-}
-
-.result-container span{
-    font-size: clamp(1.4rem, 4vw, 5rem);
 }
 
 .vertical-line::after {
@@ -144,7 +139,7 @@ body{
 
 #game-board{
     background-color: #c9fff6;
-    width: 98dvw;
+    width: 97dvw;
     position: relative;
     flex: 1;
 }
